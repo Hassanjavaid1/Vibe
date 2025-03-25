@@ -1,0 +1,14 @@
+{
+  "name": "Vibe",
+  "short_name": "Vibe",
+  "theme_color": "#00ff00",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    { "src": "/small-logo.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/big-logo.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}

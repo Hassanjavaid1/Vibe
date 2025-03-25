@@ -2,20 +2,155 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  background-image: url(/bg.jpg);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  color: white;
+  font-family: var(--font-poppins), sans-serif;
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+@media (hover: none) and (pointer: coarse) {
+  html,
+  body {
+    touch-action: manipulation;
+  }
+}
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+body::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(245, 222, 179, 0.613);
+  border-radius: 5px;
+}
+
+/*Media Player Customization*/
+
+.rhap_container {
+  background-color: transparent !important;
+}
+.rhap_main-controls-button {
+  color: white !important;
+}
+.rhap_volume-button {
+  color: white !important;
+}
+.rhap_time {
+  color: white !important;
+}
+.rhap_repeat-button {
+  color: white !important;
+}
+.rhap_download-progress {
+  background-color: gray !important;
+}
+.rhap_progress-filled {
+  background-color: #bfda16 !important;
+}
+.rhap_progress-indicator {
+  background-color: #bfda16 !important;
+}
+
+.rhap_volume-bar {
+  background-color: #bfda16 !important;
+}
+.rhap_volume-indicator {
+  background-color: #bfda16 !important;
+}
+.rhap_horizontal-reverse {
+  gap: 2rem;
+}
+.rhap_additional-controls {
+  justify-content: end;
+}
+
+@keyframes beatEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.01); /* Slightly scale up */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.playing {
+  animation: beatEffect 2s ease-in-out infinite; /* Adjust speed for a natural beat */
+}
+
+/* //////////////////////////
+Custom media queries
+////////////////////////// */
+@media (min-width: 320px) {
+  body {
+    overflow-y: hidden;
+  }
+  .no-scrollbar-home::-webkit-scrollbar {
+    display: none;
+  }
+  .rhap_container {
+    padding: 0.8rem 0.8rem !important;
+  }
+
+  div {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+  .rhap_rewind-button {
+    display: none;
+  }
+  .rhap_forward-button {
+    display: none;
+  }
+  .rhap_volume-controls {
+    display: none !important;
+  }
+  .rhap_progress-indicator {
+    width: 13px !important;
+    height: 13px !important;
+    top: -5px !important;
+  }
+  .rhap_progress-section {
+    width: 100%;
+  }
+  .rhap_main {
+    gap: 4px;
+  }
+}
+@media (min-width: 1280px) {
+  .rhap_container {
+    padding: unset !important;
+  }
+  .rhap_rewind-button {
+    display: block;
+  }
+  .rhap_forward-button {
+    display: block;
+  }
+  .rhap_volume-controls {
+    display: block !important;
+  }
+  .rhap_progress-section {
+    width: unset;
+  }
+  .show-scrollbar::-webkit-scrollbar {
+    background-color: gray;
+    width: 8px;
+  }
+  .show-scrollbar::-webkit-scrollbar {
+    display: block!important;
+  }
 }
