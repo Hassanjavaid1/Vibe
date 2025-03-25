@@ -23,7 +23,7 @@ export async function POST(request) {
       artistID = result.insertId;
     } else {
       artistID = artistExist[0].id;
-      console.log("else condition id", artistID);
+     // console.log("else condition id", artistID);
 
       // Update Artist Profile Image
 

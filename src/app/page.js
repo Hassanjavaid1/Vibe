@@ -1,8 +1,3 @@
-//import Home from "./components/Home";
-// import MusicPlayer from "./components/MusicPlayer";
-// import Navbar from "./components/Navbar";
-// import Playlists from "./components/Playlists";
-// import RecentSongsList from "./components/RecentSongsList";
 
 import dynamic from "next/dynamic";
 const Home = dynamic(() => import("./components/Home"));
