@@ -5,7 +5,9 @@ export async function middleware(request) {
   const path = request.nextUrl.pathname;
   const isPublicPath = path == "/api/auth/signin";
   const token =
-    (await request.cookies.get("next-auth.session-token")?.value) || "";
+    (await request.cookies.get(
+      "__Secure-next-auth.session-token" || "next-auth.session-token"
+    )?.value) || "";
 
   if (isPublicPath && token) {
     return NextResponse.redirect(new URL("/", request.url));
