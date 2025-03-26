@@ -18,6 +18,7 @@ export function ContextApi({ children }) {
       const response = await fetch("/api/songs");
       const data = await response.json();
       setData(data.songs);
+      console.log('content',data)
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
