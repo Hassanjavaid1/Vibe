@@ -15,6 +15,7 @@ function MusicPlayer() {
   } = useContext(UserContext);
 
   const [autoPlay, setAutoPlay] = useState(false);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   if (!selectedMedia) {
     return null;
@@ -31,14 +32,17 @@ function MusicPlayer() {
   }, [playingTime]);
 
   useEffect(() => {
-    if (selectedMedia?.file) {
+    if (!isFirstLoad && selectedMedia?.file) {
       setAutoPlay(true);
     }
     setPlayingTime(false);
   }, [selectedMedia]);
 
   useEffect(() => {
-    setAutoPlay(false);
+    if (isFirstLoad) {
+      setAutoPlay(false);
+      setIsFirstLoad(false);
+    }
   }, []);
 
   return (
