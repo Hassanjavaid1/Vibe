@@ -102,7 +102,7 @@ function Home() {
                         width={100}
                         height={100}
                         loading="eager"
-                        className="object-cover min-w-[45px] w-[45px] h-[45px] rounded-md  xl:w-[60px] xl:h-[60px]"
+                        className="object-cover min-w-[60px] w-[60px] h-[45px] rounded-md  xl:w-[60px] xl:h-[60px]"
                       />
 
                       {selectedMedia.id == topMedia[name].id && (

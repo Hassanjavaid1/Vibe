@@ -1,20 +1,26 @@
 "use client";
 import Image from "next/image";
-import { useContext, useEffect, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { UserContext } from "./UserContext";
 import PlayerSkeleton from "./skeletons/PlayerSkeleton";
 function MusicPlayer() {
-  const { selectedMedia, playingTime, setPlayingTime, setIsPlaying ,isLoading} =
-    useContext(UserContext);
+  const {
+    selectedMedia,
+    playingTime,
+    setPlayingTime,
+    setIsPlaying,
+    isLoading,
+  } = useContext(UserContext);
+
+  const [autoPlay, setAutoPlay] = useState(false);
 
   if (!selectedMedia) {
     return null;
   }
 
   const { title, file, artistImg, artistName } = selectedMedia;
-
   useEffect(() => {
     if (playingTime) {
       let localData = JSON.parse(localStorage.getItem("recentMedia")) || [];
@@ -25,14 +31,21 @@ function MusicPlayer() {
   }, [playingTime]);
 
   useEffect(() => {
+    if (selectedMedia?.file) {
+      setAutoPlay(true);
+    }
     setPlayingTime(false);
   }, [selectedMedia]);
+
+  useEffect(() => {
+    setAutoPlay(false);
+  }, []);
 
   return (
     <div className="fixed w-full bottom-0 z-10">
       <div className="absolute inset-0 bg-white/5 backdrop-blur-md"></div>
 
-      {isLoading? (
+      {isLoading ? (
         <PlayerSkeleton />
       ) : (
         <div className=" container mx-auto relative z-20 xl:p-2 xl:my-2">
@@ -62,7 +75,7 @@ function MusicPlayer() {
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
-                autoPlay={selectedMedia ? true : false}
+                autoPlay={autoPlay}
                 layout="horizontal-reverse"
               />
             </div>

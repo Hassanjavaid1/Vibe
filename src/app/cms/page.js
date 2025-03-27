@@ -128,9 +128,7 @@ function page() {
               onChange={handleChange}
               required
             >
-              <option value="" >
-                Select Artist
-              </option>
+              <option value="">Select Artist</option>
               <option value="unknown">Mix Songs</option>
               <option value="qari-waheed-zafar">Qari Waheed Zafar Qasmi</option>
               <option value="owais-raza-qadri">Owais Raza Qadri</option>
